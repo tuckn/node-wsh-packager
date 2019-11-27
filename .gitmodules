@@ -1,0 +1,3 @@
+[submodule "lib/tkn-util"]
+	path = lib/tkn-util
+	url = https://github.com/tuckn/tkn-node-util.git

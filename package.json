@@ -1,0 +1,36 @@
+{
+  "name": "tkn-wsfjobscriptjoiner",
+  "version": "1.0.0",
+  "description": "Joins WSH scripts that are written on a job of a Windows Script File(.wsf).",
+  "scripts": {
+    "cli": "node cli",
+    "test-sjis": "node cli run -w ./test/main_sjis.wsf",
+    "test-utf16be": "node cli run -w ./test/main_utf16-be.wsf",
+    "test-utf8bom": "node cli run -w ./test/main_utf8-bom-crlf.wsf",
+    "test-utf8lf": "node cli run -w ./test/main_utf8-lf.wsf",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tuckn",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^3.0.2",
+    "uglify-js": "^3.6.6"
+  },
+  "main": "cli.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuckn/tkn-node-WsfJobScriptJoiner.git"
+  },
+  "keywords": [
+    "Windows",
+    "WSH",
+    "WSF",
+    "minify"
+  ],
+  "bugs": {
+    "url": "https://github.com/tuckn/tkn-node-WsfJobScriptJoiner/issues"
+  },
+  "homepage": "https://github.com/tuckn/tkn-node-WsfJobScriptJoiner#readme"
+}
