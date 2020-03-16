@@ -15,7 +15,8 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^3.0.2",
-    "uglify-js": "^3.6.6"
+    "uglify-js": "^3.6.6",
+    "xml-js": "^1.6.11"
   },
   "main": "cli.js",
   "devDependencies": {},
