@@ -30,9 +30,8 @@ const minifyingJscriptOptions = { ie8: true, mangle: false };
 const WSF_EOL = '\r\n';
 const SCRIPTTAG_VBS = '<script language="VBScript">';
 const SCRIPTTAG_JS = '<script language="JScript">';
-const regScriptSrcTag = new RegExp('\\s*<script\\s+language\\s*=\\s*"(\\w+)"\\s+src="([^"]+)"\\s*></script\\s*>', 'gi');
-// @TODO コード内に"</script>"が書かれていた場合を排除できてない…
-const regInlineScript = new RegExp('\\s*<script\\s+language\\s*=\\s*"(\\w+)"\\s*>([\\s\\S]+)</script\\s*>', 'gi');
+// const regScriptSrcTag = new RegExp('\\s*<script\\s+language\\s*=\\s*"(\\w+)"\\s+src="([^"]+)"\\s*></script\\s*>', 'gi');
+// const regInlineScript = new RegExp('\\s*<script\\s+language\\s*=\\s*"(\\w+)"\\s*>([\\s\\S]+)</script\\s*>', 'gi');
 
 /**
  * @function minifyVbsCode {{{
@@ -41,7 +40,8 @@ const regInlineScript = new RegExp('\\s*<script\\s+language\\s*=\\s*"(\\w+)"\\s*
  * @return {String}
  */
 function minifyVbsCode(code) {
-  const replaced = code.replace(/(^|\r?\n)([^'"]*)(\s*'[^\n]*)/g, '$1$2')
+  const replaced = code
+    .replace(/(^|\r?\n)([^'"]*)(\s*'[^\n]*)/g, '$1$2')
     .replace(/\s*\r?\n\s*\r?\n/g, '\r\n') // 空行を削除
     .replace(/\s+_\r?\n\s*/g, ' '); // Remove VB CR _
   return replaced;
@@ -82,7 +82,7 @@ async function writeMinifiedWsf(wsfPath, options = {}) {
   }
 
   const jobId = pullVal(options, 'jobId', 'run');
-  const jobIdx = jobs.findIndex((job) => isSameStr(job.attributes.id, jobId));
+  const jobIdx = jobs.findIndex(job => isSameStr(job.attributes.id, jobId));
   if (jobIdx === -1) {
     throw new Error(`${ERR_TITLE} ${Function.name}\n`
         + `'No declare <job id=${jobId}> tag`);
@@ -94,13 +94,13 @@ async function writeMinifiedWsf(wsfPath, options = {}) {
   const scripts = jobs[jobIdx].script;
   let packagedWsf = `<package>${WSF_EOL}<job id = run>${WSF_EOL}`;
 
-  scripts.forEach((obj) => {
+  scripts.forEach(obj => {
     const lang = obj.attributes.language;
     const srcPath = obj.attributes.src;
     const wshPath = path.join(wsfDir, srcPath);
     const wshFileName = path.basename(wshPath);
 
-    if (ignoreFileNames.some((name) => name === wshFileName)) {
+    if (ignoreFileNames.some(name => name === wshFileName)) {
       return;
     }
 
@@ -191,13 +191,13 @@ async function packScripts(wsfPath, options = {}) {
   let unitedJscripts = '';
   let unitedVbScripts = '';
 
-  scripts.forEach((obj) => {
+  scripts.forEach(obj => {
     const lang = obj.attributes.language;
     const srcPath = obj.attributes.src;
     const wshPath = path.join(wsfDir, srcPath);
     const wshFileName = path.basename(wshPath);
 
-    if (ignoreFileNames.some((name) => name === wshFileName)) {
+    if (ignoreFileNames.some(name => name === wshFileName)) {
       return;
     }
 

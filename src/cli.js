@@ -15,9 +15,10 @@ const mainCmds = {}; // 0: node.exe, 1: cli.js, 2: <mainCmds>
 const ERR_TITLE = `Error in ${__filename}`;
 const collect = (val, prev) => prev.concat([val]);
 
-mainCmds.run = async () => { // {{{
+mainCmds.packAsWsf = async () => { // {{{
   cli
     .version('0.0.2')
+    .description('Packaging a job defined on the .wsf file')
     .option('-w, --wsf-path <Path>', 'A path of WSH script')
     .option('-J, --job-id <String>', 'A Job ID')
     .option('-I, --ignores <String>', 'Ignoring filenames', collect, [])
@@ -41,10 +42,10 @@ mainCmds.run = async () => { // {{{
   }
 }; // }}}
 
-mainCmds.packScripts = async () => { // {{{
+mainCmds.packAsModule = async () => { // {{{
   cli
     .version('0.0.1')
-    .description('Extract minified scripts as index.js/index.vbs')
+    .description('Packaging scripts defined on the .wsf file')
     .option('-w, --wsf-path <Path>', 'A path of WSH script')
     .option('-J, --job-id <String>', 'A Job ID')
     .option('-I, --ignores <String>', 'Ignoring filenames', collect, [])
@@ -88,7 +89,7 @@ if (process.argv.length >= 3 && process.argv[2].indexOf('-') === -1) {
   mainCmd = 'run';
 }
 
-const matchedCmd = Object.keys(mainCmds).find((key) => mainCmd === key);
+const matchedCmd = Object.keys(mainCmds).find(key => mainCmd === key);
 
 if (matchedCmd === undefined) {
   exitProcess();

@@ -5,4 +5,4 @@
  * @links https://github.com/tuckn/tkn-MinifyWsf
  */
 
-module.exports = require('./lib/minify-wsf.js');
+module.exports = require('./minify-wsf.js');

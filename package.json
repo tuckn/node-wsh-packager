@@ -1,37 +1,75 @@
 {
-  "name": "tkn-wsfjobscriptjoiner",
+  "name": "@tuckn/wsh-packager",
   "version": "1.0.0",
-  "description": "Joins WSH scripts that are written on a job of a Windows Script File(.wsf).",
+  "description": "Packaging WSH scripts that are defined in a Windows Script File(.wsf).",
+  "private": true,
+  "license": "MIT",
+  "author": "Tuckn <tuckn333+github@gmail.com>",
+  "homepage": "https://github.com/tuckn/npm-wsh-packager#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuckn/npm-wsh-packager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tuckn/npm-wsh-packager/issues"
+  },
+  "keywords": [
+    "Windows",
+    "WSH",
+    "WSF",
+    "JScript",
+    "VBScript",
+    "CMD",
+    "cli",
+    "compress",
+    "minify",
+    "pack"
+  ],
+  "main": "./index.js",
+  "bin": {
+    "wsh-packager": "./cli.js"
+  },
   "scripts": {
     "cli": "node cli",
     "test-sjis": "node cli run -w ./test/main_sjis.wsf",
     "test-utf16be": "node cli run -w ./test/main_utf16-be.wsf",
     "test-utf8bom": "node cli run -w ./test/main_utf8-bom-crlf.wsf",
     "test-utf8lf": "node cli run -w ./test/main_utf8-lf.wsf",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "rimraf dist",
+    "build": "run-p build:*",
+    "build:common": "tsc",
+    "fix": "run-p fix:*",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:prettier": "npm run lint:prettier -- --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint --ext js,ts .",
+    "lint:prettier": "prettier -l \"**/*.{json,md,yml,yaml}\"",
+    "lint:type": "tsc --noEmit",
+    "test": "run-s lint test:*",
+    "test:unit": "jest"
   },
-  "author": "Tuckn",
-  "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^3.0.2",
     "uglify-js": "^3.6.6",
     "xml-js": "^1.6.11"
   },
-  "main": "cli.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tuckn/tkn-node-WsfJobScriptJoiner.git"
-  },
-  "keywords": [
-    "Windows",
-    "WSH",
-    "WSF",
-    "minify"
-  ],
-  "bugs": {
-    "url": "https://github.com/tuckn/tkn-node-WsfJobScriptJoiner/issues"
-  },
-  "homepage": "https://github.com/tuckn/tkn-node-WsfJobScriptJoiner#readme"
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@typescript-eslint/eslint-plugin": "2.19.0",
+    "@typescript-eslint/parser": "2.19.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-simple-import-sort": "5.0.1",
+    "husky": "4.2.1",
+    "jest": "^25.1.0",
+    "lint-staged": "10.0.7",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.19.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  }
 }
