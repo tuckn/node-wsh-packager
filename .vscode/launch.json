@@ -5,31 +5,35 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Jest",
       "type": "node",
       "request": "launch",
-      "name": "minifyWsf",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}\\cli.js",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "args": [
-        "--wsf-path", "${workspaceFolder}\\test\\src\\Main.wsf",
-        "--dest-dir", "${workspaceFolder}\\test\\dest",
-      ]
+        "--config", "${workspaceFolder}/jest.config.js",
+        "--runInBand",
+        "--no-cache",
+        "--testNamePattern", "insertGTagManagerCode"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     },
     {
+      "name": "CLI",
       "type": "node",
       "request": "launch",
-      "name": "packScripts",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}\\cli.js",
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "program": "${workspaceFolder}/dist/bin/index.js",
       "args": [
-        "packScripts",
-        "--wsf-path", "${workspaceFolder}\\test\\src\\Main.wsf",
-        "--ignores", "Main.js",
-        "--dest-dir", "${workspaceFolder}\\test\\dest",
+        "analytics",
+        "./assets/docs",
+        "MY_TRACKING_ID"
       ]
     }
   ]

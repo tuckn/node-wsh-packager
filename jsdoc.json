@@ -1,0 +1,63 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": ["./dist/", "./README.md"],
+    "includePattern": ".js$",
+    "excludePattern": "(./node_modules/|./test/)"
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "recurse": true,
+    "verbose": true,
+    "template": "./node_modules/docdash"
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true,
+    "idInHeadings": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "includeDate": false,
+      "useLongnameInNav": true
+    }
+  },
+  "docdash": {
+    "static": true,
+    "sort": true,
+    "disqus": "",
+    "openGraph": {
+      "title": "Node.js: wsh-packager",
+      "type": "website",
+      "image": "https://docs.tuckn.net/node-wsh-packager/img/openGraph-image.png",
+      "site_name": "@tuckn/wsh-packager",
+      "url": "https://docs.tuckn.net/node-wsh-packager"
+    },
+    "meta": {
+      "title": "node-wsh-packager",
+      "description": "Packaging WSH scripts that are defined in a Windows Script File(.wsf).",
+      "keyword": "Windows, WSH, WSF, JScript, VBScript, CMD, cli, compress, minify, pack"
+    },
+    "search": true,
+    "collapse": false,
+    "wrap": false,
+    "typedefs": true,
+    "removeQuotes": "none",
+    "menu": {
+      "Github repo": {
+        "href": "https://github.com/tuckn/node-wsh-packager",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "repository"
+      }
+    }
+  }
+}

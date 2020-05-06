@@ -1,15 +1,24 @@
 /** @type {import('prettier').Options} */
 module.exports = {
-  printWidth: 100,
+  printWidth: 80,
   semi: true,
   singleQuote: true,
+  tabWidth: 2,
+  useTabs: false,
   trailingComma: 'all',
+  endOfLine: 'lf',
   overrides: [
     {
-      files: '*.{md,yml,yaml}',
+      files: '*.{md}',
       options: {
-        printWidth: 80,
-        semi: true,
+        proseWrap: 'never',
+        singleQuote: false,
+        trailingComma: 'none',
+      },
+    },
+    {
+      files: '*.{yml,yaml}',
+      options: {
         singleQuote: false,
         trailingComma: 'none',
       },

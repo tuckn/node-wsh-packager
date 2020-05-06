@@ -1,0 +1,86 @@
+﻿<package>
+  <job id = "test:String">
+    <script language="JScript" src="./src/String.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/String.test.js"></script>
+  </job>
+  <job id = "test:Function">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/Function.test.js"></script>
+  </job>
+  <job id = "test:Object">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/Object.test.js"></script>
+  </job>
+  <job id = "test:Array">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/Array.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/Array.test.js"></script>
+  </job>
+  <job id = "test:Console">
+    <script language="JScript" src="./src/Console.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/Console.test.js"></script>
+  </job>
+  <job id = "test:JSON">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/JSON.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/JSON.test.js"></script>
+  </job>
+  <job id = "test:ArrayBuffer">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/Array.js"></script>
+    <script language="JScript" src="./src/Console.js"></script>
+    <script language="JScript" src="./src/ArrayBuffer.js"></script>
+    <script language="JScript" src="./WshModules/WshCore/dist/Jest.min.js"></script>
+    <script language="JScript" src="./src/ArrayBuffer.test.js"></script>
+  </job>
+
+  <job id = "./dist/String.min.js">
+    <script language="JScript" src="./src/String.js"></script>
+  </job>
+  <job id = "./dist/Function.min.js">
+    <script language="JScript" src="./src/Function.js"></script>
+  </job>
+  <job id = "./dist/Object.min.js">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+  </job>
+  <job id = "./dist/Array.min.js">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/Array.js"></script>
+  </job>
+  <job id = "./dist/Console.min.js">
+    <script language="JScript" src="./src/Console.js"></script>
+  </job>
+  <job id = "./dist/JSON.min.js">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/JSON.js"></script>
+  </job>
+  <job id = "./dist/ArrayBuffer.min.js">
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/Array.js"></script>
+    <script language="JScript" src="./src/ArrayBuffer.js"></script>
+  </job>
+
+  <job id = "./dist/index.js">
+    <script language="JScript" src="./src/String.js"></script>
+    <script language="JScript" src="./src/Function.js"></script>
+    <script language="JScript" src="./src/Object.js"></script>
+    <script language="JScript" src="./src/Array.js"></script>
+    <script language="JScript" src="./src/Console.js"></script>
+    <script language="JScript" src="./src/JSON.js"></script>
+    <script language="JScript" src="./src/ArrayBuffer.js"></script>
+  </job>
+</package>

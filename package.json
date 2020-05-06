@@ -1,17 +1,17 @@
 {
   "name": "@tuckn/wsh-packager",
+  "description": "Node.js CLI ot pack WSH scripts that are defined in a Windows Script File(.wsf).",
   "version": "1.0.0",
-  "description": "Packaging WSH scripts that are defined in a Windows Script File(.wsf).",
+  "author": "Tuckn <tuckn333+github@gmail.com>",
   "private": true,
   "license": "MIT",
-  "author": "Tuckn <tuckn333+github@gmail.com>",
-  "homepage": "https://github.com/tuckn/npm-wsh-packager#readme",
+  "homepage": "https://docs.tuckn.net/node-wsh-packager",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuckn/npm-wsh-packager.git"
+    "url": "git+https://github.com/tuckn/node-wsh-packager.git"
   },
   "bugs": {
-    "url": "https://github.com/tuckn/npm-wsh-packager/issues"
+    "url": "https://github.com/tuckn/node-wsh-packager/issues"
   },
   "keywords": [
     "Windows",
@@ -25,9 +25,12 @@
     "minify",
     "pack"
   ],
-  "main": "./index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lib/index.js",
   "bin": {
-    "wsh-packager": "./cli.js"
+    "insert-gtag": "./dist/bin/index.js"
   },
   "scripts": {
     "cli": "node cli",
@@ -35,41 +38,66 @@
     "test-utf16be": "node cli run -w ./test/main_utf16-be.wsf",
     "test-utf8bom": "node cli run -w ./test/main_utf8-bom-crlf.wsf",
     "test-utf8lf": "node cli run -w ./test/main_utf8-lf.wsf",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf ./dist",
     "build": "run-p build:*",
     "build:common": "tsc",
-    "fix": "run-p fix:*",
-    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:eslint": "npm run lint:eslint -- --fix --ext .js,.ts ./src/",
     "fix:prettier": "npm run lint:prettier -- --write",
-    "lint": "run-p lint:*",
-    "lint:eslint": "eslint --ext js,ts .",
-    "lint:prettier": "prettier -l \"**/*.{json,md,yml,yaml}\"",
+    "fix": "run-p fix:*",
+    "lint:eslint": "eslint --ext .js,.ts ./src/",
+    "lint:prettier": "prettier -l \"**/*.{json,css,md,yml,yaml}\"",
     "lint:type": "tsc --noEmit",
-    "test": "run-s lint test:*",
-    "test:unit": "jest"
+    "lint": "run-p lint:*",
+    "test": "jest --coverage",
+    "predocs": "npm run build || rimraf ./docs",
+    "docs:common": "jsdoc --configure ./jsdoc.json",
+    "cp-docs-css": "cpx ./scripts/jsdoc.css ./docs/styles/",
+    "cp-docs-img": "cpx ./assets/img ./docs/",
+    "postdocs": "run-p cp-docs-*",
+    "docs": "run-s docs:*",
+    "prepublishOnly": "npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo @FIXME \"npx lint-staged\" does not work!"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{json,css,md,yml,yaml}": "prettier --write"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
-    "commander": "^3.0.2",
-    "uglify-js": "^3.6.6",
+    "@tuckn/fs-hospitality": "1.3.0",
+    "@types/uglify-js": "3.9.0",
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
+    "lodash": "4.17.15",
+    "uglify-js": "3.9.2",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.2",
-    "@typescript-eslint/eslint-plugin": "2.19.0",
-    "@typescript-eslint/parser": "2.19.0",
+    "@types/jest": "^25.2.1",
+    "@types/lodash": "4.14.150",
+    "@typescript-eslint/eslint-plugin": "2.31.0",
+    "@typescript-eslint/parser": "2.31.0",
+    "cpx": "1.5.0",
+    "docdash": "1.2.0",
     "eslint": "6.8.0",
-    "eslint-config-prettier": "6.10.0",
-    "eslint-plugin-import": "2.20.1",
-    "eslint-plugin-prettier": "3.1.2",
-    "eslint-plugin-simple-import-sort": "5.0.1",
-    "husky": "4.2.1",
-    "jest": "^25.1.0",
-    "lint-staged": "10.0.7",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jsdoc": "^24.0.2",
+    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-simple-import-sort": "5.0.3",
+    "fs-extra": "^9.0.0",
+    "husky": "4.2.5",
+    "jest": "^26.0.1",
+    "jsdoc": "3.6.4",
+    "lint-staged": "10.2.2",
     "npm-run-all": "4.1.5",
-    "prettier": "1.19.1",
+    "prettier": "2.0.5",
     "rimraf": "^3.0.2",
-    "ts-jest": "^25.2.0",
-    "typescript": "^3.7.5"
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
   }
 }
