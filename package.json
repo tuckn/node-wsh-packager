@@ -3,7 +3,7 @@
   "description": "Node.js CLI ot pack WSH scripts that are defined in a Windows Script File(.wsf).",
   "version": "1.0.0",
   "author": "Tuckn <tuckn333+github@gmail.com>",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "homepage": "https://docs.tuckn.net/node-wsh-packager",
   "repository": {
