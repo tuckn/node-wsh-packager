@@ -1,0 +1,220 @@
+﻿<package>
+  <job id = "test:Jest">
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Jest.test.js"></script>
+  </job>
+  <job id = "test:Util">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Util.test.js"></script>
+  </job>
+  <job id = "test:Buffer">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/Buffer.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Buffer.test.js"></script>
+  </job>
+  <job id = "test:Path">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Path.test.js"></script>
+  </job>
+  <job id = "test:OS">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/OS.test.js"></script>
+  </job>
+  <job id = "test:FileSystem">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/FileSystem.test.js"></script>
+  </job>
+  <job id = "test:Process">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Process.test.js"></script>
+  </job>
+  <job id = "test:FileSystemExtra">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.test.js"></script>
+  </job>
+  <job id = "test:ChildProcess">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/ChildProcess.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/ChildProcess.test.js"></script>
+  </job>
+  <job id = "test:Net">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Readline.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/ChildProcess.js"></script>
+    <script language="JScript" src="./src/Logger.js"></script>
+    <script language="JScript" src="./src/ConfigStore.js"></script>
+    <script language="JScript" src="./src/Net.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Net.test.js"></script>
+  </job>
+  <job id = "test:Http">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Buffer.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/DotEnv.js"></script>
+    <script language="JScript" src="./src/Http.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Http.test.js"></script>
+  </job>
+  <job id = "test:DotEnv">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/DotEnv.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/DotEnv.test.js"></script>
+  </job>
+  <job id = "test:ConfigStore">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/ConfigStore.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/ConfigStore.test.js"></script>
+  </job>
+  <job id = "test:Logger">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Readline.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/ChildProcess.js"></script>
+    <script language="JScript" src="./src/Logger.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Logger.test.js"></script>
+  </job>
+  <job id = "test:Commander">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/Commander.js"></script>
+    <script language="JScript" src="./src/Jest.js"></script>
+    <script language="JScript" src="./src/Commander.test.js"></script>
+  </job>
+  <job id = "index.js">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Buffer.js"></script>
+    <script language="JScript" src="./src/Readline.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/Commander.js"></script>
+    <script language="JScript" src="./src/DotEnv.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/ChildProcess.js"></script>
+    <script language="JScript" src="./src/Logger.js"></script>
+    <script language="JScript" src="./src/ConfigStore.js"></script>
+    <script language="JScript" src="./src/Net.js"></script>
+    <script language="JScript" src="./src/Http.js"></script>
+  </job>
+  <job id = "test.js">
+    <script language="JScript" src="./src/Jest.js"></script>
+  </job>
+  <job id = "index.vbs">
+    <script language="VBScript" src="./src/Util.vbs"></script>
+  </job>
+  <job id = "cli.wsf">
+    <script language="JScript" src="./WshModules/JScriptPolyfill/index.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="VBScript" src="./src/Util.vbs"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./src/Buffer.js"></script>
+    <script language="JScript" src="./src/Readline.js"></script>
+    <script language="JScript" src="./src/Path.js"></script>
+    <script language="JScript" src="./src/OS.js"></script>
+    <script language="JScript" src="./src/FileSystem.js"></script>
+    <script language="JScript" src="./src/Process.js"></script>
+    <script language="JScript" src="./src/Commander.js"></script>
+    <script language="JScript" src="./src/DotEnv.js"></script>
+    <script language="JScript" src="./src/FileSystemExtra.js"></script>
+    <script language="JScript" src="./src/ChildProcess.js"></script>
+    <script language="JScript" src="./src/Logger.js"></script>
+    <script language="JScript" src="./src/ConfigStore.js"></script>
+    <script language="JScript" src="./src/Net.js"></script>
+    <script language="JScript" src="./src/Http.js"></script>
+    <script language="JScript" src="./src/cli.js"></script>
+  </job>
+</package>

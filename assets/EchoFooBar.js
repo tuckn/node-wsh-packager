@@ -1,0 +1,1 @@
+﻿WScript.Echo(JSON.stringify({ foo: GetBar() }));

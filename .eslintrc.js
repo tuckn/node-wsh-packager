@@ -46,7 +46,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/*.test.ts'],
+        devDependencies: ['**/*.test.ts', 'scripts/**/*.ts'],
         peerDependencies: false,
       },
     ],
@@ -54,6 +54,7 @@ module.exports = {
     'import/order': 'off',
     'import/prefer-default-export': 'off',
     'newline-after-description': 'off',
+    'no-await-in-loop': 'off',
     'no-console': 'off',
     'no-empty': ['error', { allowEmptyCatch: true }],
     'no-restricted-syntax': [

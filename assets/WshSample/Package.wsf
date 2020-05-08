@@ -1,0 +1,21 @@
+﻿<package>
+  <job id = "This_is_the_ignored.job">
+    <script language="JScript" src="./src/Foo.js"></script>
+    <script language="JScript" src="./src/Bar.js"></script>
+    <script language="VBScript" src="./src/Baz.vbs"></script>
+  </job>
+  <job id = "./dist/index.js">
+    <script language="JScript" src="./src/Foo.js"></script>
+    <script language="JScript" src="./src/IgnoredSrc.js"></script>
+    <script language="JScript" src="./src/Bar.js"></script>
+  </job>
+  <job id = "./dist/index.vbs">
+    <script language="VBScript" src="./src/Baz.vbs"></script>
+  </job>
+  <job id = "./dist/run.wsf">
+    <script language="JScript" src="./src/Foo.js"></script>
+    <script language="JScript" src="./src/Bar.js"></script>
+    <script language="VBScript" src="./src/Baz.vbs"></script>
+    <script language="JScript" src="./src/Qux.js"></script>
+  </job>
+</package>
