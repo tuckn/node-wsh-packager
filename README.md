@@ -1,6 +1,6 @@
 # Node.js: wsh-packager
 
-Node.js CLI to pack WSH scripts (.js, .vbs) that are defined in a Windows Script File (.wsf).
+Node.js CLI to bundle WSH scripts (.js, .vbs) that are defined in a Windows Script File (.wsf).
 WSH is an abbreviation for Windows Script Host.
 
 ## Installation
@@ -14,16 +14,17 @@ or download a [released binary file](https://github.com/tuckn/node-wsh-packager/
 ## Usage
 
 ```console
-> wsh-packager --help
+> wsh-packager bundle --help
+Usage: wsh-packager bundle [options] <dirPath>
 
-Usage: wsh-packager [options] <dirPath>
-
-Pack .js, .vbs (WSH scripts) files defined in .wsf file (Windows Script File).
+Bundles .js, .vbs (WSH scripts) files defined in .wsf file.
 
 Options:
-  -V, --version         output the version number
-  -N, --wsf-name <name> Default: Package.wsf
-  -h, --help           display help for command
+  -V, --version              output the version number
+  -J, --job-id <RegExp>      A job id to be bundled (Default: "\.(js|vbs|wsf)$").
+  -D, --base-dir <path>      Default is the <dirPath>
+  -I, --ignore-src <RegExp>  Ex. "main\.js$"
+  -h, --help                 display help for command
 ```
 
 ### Basic Example
@@ -52,7 +53,7 @@ Package.wsf is
 and execute the below command.
 
 ```console
-> wsh-packager "D:\MyWshFolder"
+> wsh-packager bundle "D:\MyWshFolder"
 ```
 
 The result
@@ -108,7 +109,7 @@ Package.wsf is
 and execute the below command.
 
 ```console
-> wsh-packager "D:\MyWshFolder"
+> wsh-packager bundle "D:\MyWshFolder"
 ```
 
 The result
@@ -133,7 +134,7 @@ _Run.wsf_ is an executable file on Windows of most versions.
 
 ## Documentation
 
-All specifications are written [here](https://docs.tuckn.net/node-wsh-packager).
+See all specifications [here](https://docs.tuckn.net/node-wsh-packager).
 
 ## License
 

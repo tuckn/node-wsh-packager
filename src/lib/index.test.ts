@@ -59,8 +59,8 @@ WScript.Echo('sentence.includes(word) is "' + sentence.includes(word) + '"');
     expect(stdout).toEqual(
       expect.stringContaining('sentence.includes(word) is "true"'),
     );
-    // Clean
-    fse.removeSync(tempWsfPath);
+
+    fse.removeSync(tempWsfPath); // Clean
   });
 
   test('minifyVbsCode', () => {
@@ -83,7 +83,7 @@ End Function
 
 
 ' @Function GetVbsTypeName
-' @Description Retrun a variable type. for JScript.
+' @Description Return a variable type. for JScript.
 Function GetVbsTypeName(v)
   GetVbsTypeName = TypeName(v)
 End Function
@@ -127,8 +127,8 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
       encoding: 'utf8',
     });
     expect(stdout).toEqual(expect.stringContaining('Type is String'));
-    // Clean
-    fse.removeSync(tempWsfPath);
+
+    fse.removeSync(tempWsfPath); // Clean
   });
 
   test('bundleJScriptSrcs', () => {
@@ -158,8 +158,8 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
       encoding: 'utf8',
     });
     expect(stdout).toEqual(expect.stringContaining('{"foo":"bar"}'));
-    // Clean
-    fse.removeSync(tempWsfPath);
+
+    fse.removeSync(tempWsfPath); // Clean
 
     expect(() => wpkg.bundleJScriptSrcs([])).toThrow();
   });
@@ -192,8 +192,8 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
       encoding: 'utf8',
     });
     expect(stdout).toEqual(expect.stringContaining('Type is String'));
-    // Clean
-    fse.removeSync(tempWsfPath);
+
+    fse.removeSync(tempWsfPath); // Clean
 
     expect(() => wpkg.bundleVBScriptSrcs([])).toThrow();
   });
@@ -230,8 +230,8 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
       encoding: 'utf8',
     });
     expect(stdout).toEqual(expect.stringContaining('{"foo":"bar"}'));
-    // Clean
-    fse.removeSync(tempWsfPath);
+
+    fse.removeSync(tempWsfPath); // Clean
 
     expect(() => wpkg.bundleWsfJob([])).toThrow();
   });
@@ -239,7 +239,7 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
   test('_setWsfPath', () => {
     const wsfPath = path.join(dirAssets, 'Package.wsf');
     const customFileName = path.join(dirAssets, 'CustomFileName.wsf');
-    const noneExistingPath = path.join(dirAssets, 'NONE_EXTING_FILE.wsf');
+    const noneExistingPath = path.join(dirAssets, 'NONE_EXISTING_FILE.wsf');
 
     // Specifying a directory path
     expect(wpkg._setWsfPath(dirAssets)).toBe(wsfPath);
@@ -256,12 +256,12 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
   test('bundleWshFiles', () => {
     const dirWshPj = path.join(dirAssets, 'WshSample');
     const dirDist = path.join(dirWshPj, 'dist');
-    // Clean
-    fse.removeSync(dirDist);
+    fse.removeSync(dirDist); // Clean
 
     wpkg.bundleWshFiles(dirWshPj, { ignoreSrc: 'IgnoredSrc\\.js' });
 
-    const relNames = fsh.readdirRecursivelySync(dirDist);
+    let relNames: ReturnType<typeof fsh.readdirRecursivelySync>;
+    relNames = fsh.readdirRecursivelySync(dirDist);
     expect(relNames).toHaveLength(3);
     expect(relNames).toEqual(['index.js', 'index.vbs', 'run.wsf']);
 
@@ -276,8 +276,16 @@ WScript.Echo("Type is " & GetVbsTypeName("二バイト文字"))
       ),
     );
 
-    // Clean
-    fse.removeSync(dirDist);
+    fse.removeSync(dirDist); // Clean
+
+    // Filtering with job id
+    wpkg.bundleWshFiles(dirWshPj, { jobId: '\\.js$' });
+
+    relNames = fsh.readdirRecursivelySync(dirDist);
+    expect(relNames).toHaveLength(1);
+    expect(relNames).toEqual(['index.js']);
+
+    fse.removeSync(dirDist); // Clean
 
     expect(() => wpkg.bundleWshFiles('')).toThrow();
   });

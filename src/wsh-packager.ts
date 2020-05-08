@@ -65,7 +65,7 @@ export function minifyVbsCode(code: string): string {
  * @param {object} options - Optional parameters
  * @param {string} [options.baseDir='.']
  * @param {boolean} [options.minifies=true]
- * @param {(string|RegExp)[]} [options.ignoreSrc]
+ * @param {string|RegExp} [options.ignoreSrc]
  * @returns {string} - A bundled JScript code
  */
 export function bundleJScriptSrcs(
@@ -299,15 +299,15 @@ export function _setWsfPath(source: string): string {
  * Bundles .wsf jobs defined in Package.wsf
  *
  * @memberof API
- * @param {string} dirPath - A directory path where Package.wsf is located
+ * @param {string} dirPath - A directory path where Package.wsf is located or the full-path of your .wsf file.
  * @param {object} [options] - Optional parameters
- * @param {string} [options.jobId] - A job id name in .wsf (Default: all jobs)
- * @param {string} [options.baseDir] - Default is the directory of Package.wsf
- * @param {string|RegExp} [options.ignoreSrc] - Ex. "test\\.js$"
+ * @param {string} [options.jobId] - A job id to be bundled (Default: "\\.(js|vbs|wsf)$").
+ * @param {string} [options.baseDir] - Default is the `dirPath`
+ * @param {string|RegExp} [options.ignoreSrc] - Ex. "main\\.js$"
  * @returns {void}
  * @example
 const { bundleWshFiles } = require('@tuckn/wsh-packager');
- 
+
 // Ex1.
 // [File structure]
 // D:\MyWshFolder\
@@ -325,7 +325,7 @@ const { bundleWshFiles } = require('@tuckn/wsh-packager');
 //     <script language="JScript" src="./src/JSON.js"></script>
 //   </job>
 // </package>
- 
+
 bundleWshFiles('D:\\MyWshFolder');
 // [The result]
 // D:\MyWshFolder\
@@ -336,7 +336,7 @@ bundleWshFiles('D:\\MyWshFolder');
 //     ├─ Function.js
 //     ├─ Object.js
 //     └─ JSON.js
- 
+
 // Ex2.
 // [File structure]
 // D:\MyWshFolder\
@@ -366,7 +366,7 @@ bundleWshFiles('D:\\MyWshFolder');
 //     <script language="JScript" src="./src/CLI.js"></script>
 //   </job>
 // </package>
- 
+
 bundleWshFiles('D:\\MyWshFolder');
 // [The result]
 // D:\MyWshFolder\
@@ -429,8 +429,12 @@ export function bundleWshFiles(
 
   // Bundling
   const baseDir = _.get(options, 'destDir', path.dirname(srcWsfPath));
+
+  const bundlingJobId = _.get(options, 'jobId', '\\.(js|vbs|wsf)$');
+  const bundlingRegExp = _.isRegExp(bundlingJobId)
+    ? bundlingJobId
+    : new RegExp(bundlingJobId, 'i');
   const ignoreSrc = _.get(options, 'ignoreSrc', '');
-  const specifiedJobId = _.get(options, 'specifiedJobId', '');
   const writingOptions = {
     trim: 'end',
     eol: WSH_EOL,
@@ -441,20 +445,22 @@ export function bundleWshFiles(
   jobObjs.forEach(async (jobObj) => {
     let bundledCode = '';
     const jobId = jobObj.attributes.id;
-    if (specifiedJobId && specifiedJobId !== jobObj.attributes.id) return;
+
+    // Filtering
+    if (!bundlingRegExp.test(jobId)) return;
 
     const destWshPath = path.resolve(baseDir, jobId);
     const extName = path.extname(destWshPath);
     const scriptObjs = jobObj.script as any[];
 
-    if (/\.wsf/i.test(extName)) {
+    if (/\.wsf$/i.test(extName)) {
       bundledCode = bundleWsfJob(scriptObjs, { baseDir, ignoreSrc });
     } else {
       const scriptPaths = scriptObjs.map((o) => o.attributes.src);
 
       if (/\.js$/i.test(extName)) {
         bundledCode = bundleJScriptSrcs(scriptPaths, { baseDir, ignoreSrc });
-      } else if (/\.vbs/i.test(extName)) {
+      } else if (/\.vbs$/i.test(extName)) {
         bundledCode = bundleVBScriptSrcs(scriptPaths, { baseDir, ignoreSrc });
       } else {
         return;
