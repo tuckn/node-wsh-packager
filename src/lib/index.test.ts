@@ -5,10 +5,6 @@ import * as path from 'path';
 
 import * as wpkg from './index';
 
-// Hack to make iconv load the encodings module, otherwise jest crashes. Compare
-// https://github.com/sidorares/node-mysql2/issues/489
-require('@tuckn/fs-hospitality/node_modules/iconv-lite').encodingExists('foo');
-
 const dirAssets = path.resolve(__dirname, '../../assets');
 
 describe('wsh-packager', () => {

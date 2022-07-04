@@ -6,7 +6,7 @@
   "source": {
     "include": ["./dist/", "./README.md"],
     "includePattern": ".js$",
-    "excludePattern": "(./node_modules/|./test/)"
+    "excludePattern": "(./node_modules/|./test/|.test.js)"
   },
   "plugins": ["plugins/markdown"],
   "opts": {
@@ -43,7 +43,7 @@
     },
     "meta": {
       "title": "node-wsh-packager",
-      "description": "Packaging WSH scripts that are defined in a Windows Script File(.wsf).",
+      "description": "Node.js CLI to package WSH scripts that are defined in a Windows Script File (.wsf) into one WSH file.",
       "keyword": "Windows, WSH, WSF, JScript, VBScript, CMD, cli, compress, minify, pack"
     },
     "search": true,

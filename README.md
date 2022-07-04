@@ -132,6 +132,10 @@ D:\MyWshFolder\
 
 _Run.wsf_ is an executable file on Windows of most versions.
 
+```console
+> cscript //nologo "D:\MyWshFolder\dist\Run.wsf"
+```
+
 ## Documentation
 
 See all specifications [here](https://docs.tuckn.net/node-wsh-packager).

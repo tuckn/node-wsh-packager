@@ -17,7 +17,23 @@
         "--config", "${workspaceFolder}/jest.config.js",
         "--runInBand",
         "--no-cache",
-        "--testNamePattern", "insertGTagManagerCode"
+        "--testNamePattern", "bundleWshFiles"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "CLI TypeScript",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "program": "${workspaceFolder}/dist/bin/index.js",
+      "args": [
+        "bundle",
+        "C:\\tkn\\home\\tuckn\\src\\wsh\\WshCore\\Package.wsf"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
@@ -31,9 +47,10 @@
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "program": "${workspaceFolder}/dist/bin/index.js",
       "args": [
-        "analytics",
-        "./assets/docs",
-        "MY_TRACKING_ID"
+        "bundle",
+        "./assets/WshSample",
+        "--ignore-src",
+        "IgnoredSrc"
       ]
     }
   ]

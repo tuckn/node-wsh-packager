@@ -41,72 +41,63 @@ var fse = require("fs-extra");
 var path = require("path");
 var pkg = require("pkg");
 var package_json_1 = require("../package.json");
-var pjName = 'wsh-packager';
-/**
- *
- */
 function release() {
     return __awaiter(this, void 0, void 0, function () {
-        var dirNpmBin, pathNpmBin, pathPjNameJs, dirAssets, dirAssetsBin, dirExe, releases, _i, releases_1, o, zip;
+        var dirNpmBin, pathNpmBin, dirAssets, dirAssetsBin, exeName, releases, _i, releases_1, o, zip;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     dirNpmBin = path.resolve(__dirname, '..', 'dist', 'bin');
                     pathNpmBin = path.join(dirNpmBin, 'index.js');
-                    pathPjNameJs = path.join(dirNpmBin, pjName + ".js");
-                    return [4 /*yield*/, fse.copyFile(pathNpmBin, pathPjNameJs)];
-                case 1:
-                    _a.sent();
                     dirAssets = path.resolve(__dirname, '..', 'assets');
                     dirAssetsBin = path.join(dirAssets, 'bin');
-                    dirExe = path.join(dirAssetsBin, pjName);
                     return [4 /*yield*/, fse.remove(dirAssetsBin)];
-                case 2:
+                case 1:
                     _a.sent(); // Clear
+                    return [4 /*yield*/, fse.ensureDir(dirAssetsBin)];
+                case 2:
+                    _a.sent();
+                    exeName = Object.keys(package_json_1.bin)[0];
                     releases = [
                         {
-                            srcPath: pathPjNameJs,
-                            target: 'node12-win-x86',
-                            output: path.join(dirExe, pjName + ".exe"),
-                            zipPath: path.join(dirAssetsBin, pjName + "_v" + package_json_1.version + "_win-x86.zip")
+                            target: 'latest-win-x64',
+                            srcPath: pathNpmBin,
+                            output: path.join(dirAssetsBin, "".concat(exeName, ".exe")),
+                            zipPath: path.join(dirAssetsBin, "".concat(exeName, "_v").concat(package_json_1.version, "_win-x64.zip"))
                         },
                         {
-                            srcPath: pathPjNameJs,
-                            target: 'node12-win-x64',
-                            output: path.join(dirExe, pjName + ".exe"),
-                            zipPath: path.join(dirAssetsBin, pjName + "_v" + package_json_1.version + "_win-x64.zip")
+                            /*
+                             * @NOTICE With pkg v5.7.0, conversion to win-x86 fails.
+                             * The solution is using pkg 4.4.0. it works.
+                             */
+                            target: 'latest-win-x86',
+                            srcPath: pathNpmBin,
+                            output: path.join(dirAssetsBin, "".concat(exeName, ".exe")),
+                            zipPath: path.join(dirAssetsBin, "".concat(exeName, "_v").concat(package_json_1.version, "_win-x86.zip"))
                         },
                     ];
                     _i = 0, releases_1 = releases;
                     _a.label = 3;
                 case 3:
-                    if (!(_i < releases_1.length)) return [3 /*break*/, 8];
+                    if (!(_i < releases_1.length)) return [3 /*break*/, 7];
                     o = releases_1[_i];
-                    return [4 /*yield*/, fse.ensureDir(dirExe)];
+                    return [4 /*yield*/, pkg.exec(['--target', o.target, '--output', o.output, o.srcPath])];
                 case 4:
                     _a.sent();
-                    return [4 /*yield*/, pkg.exec([o.srcPath, '--target', o.target, '--output', o.output])];
-                case 5:
-                    _a.sent();
                     zip = new AdmZip();
-                    zip.addLocalFolder(dirExe);
+                    zip.addLocalFile(o.output);
                     zip.writeZip(o.zipPath);
-                    return [4 /*yield*/, fse.remove(dirExe)];
-                case 6:
+                    return [4 /*yield*/, fse.remove(o.output)];
+                case 5:
                     _a.sent(); // Clear
-                    _a.label = 7;
-                case 7:
+                    _a.label = 6;
+                case 6:
                     _i++;
                     return [3 /*break*/, 3];
-                case 8: 
-                // Remove copied bin-JS
-                return [4 /*yield*/, fse.remove(pathPjNameJs)];
-                case 9:
-                    // Remove copied bin-JS
-                    _a.sent();
-                    return [2 /*return*/];
+                case 7: return [2 /*return*/];
             }
         });
     });
 }
 release();
+//# sourceMappingURL=release.js.map
