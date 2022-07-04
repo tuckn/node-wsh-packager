@@ -20,7 +20,7 @@ jobs:
         node-version: '12'
     - run: npm install
     - run: npm run docs
-    - run: node ./dist/bin/index.js tag-manager ./docs ${{ secrets.GTM_CONTAINER_ID }}
+    - run: npx insert-gtag tag-manager ./docs ${{ secrets.GTM_CONTAINER_ID }}
 
     - name: Update docs
       uses: jakejarvis/s3-sync-action@master
